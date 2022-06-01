@@ -16,30 +16,43 @@ public class addrecipeController {
 
     @FXML
     private VBox ingbox;
+
+    @FXML
+    private VBox ingbox1;
     @FXML
     private Button submit;
 
     String name;
     int size = 0;
 
-    TextField ingredientBox[] = new TextField[25];
-    String ingredients[] = new String[25];
+    TextField ingredientNameBox[] = new TextField[50];
+    TextField ingredientBox[] = new TextField[50];
+    String ingredients[] = new String[50];
+    String ingredientsName[] = new String[50];
     public void submitEntry(ActionEvent event)
     {
         name = dishname.getText();
         System.out.println(name);
         for(int x = 0; x < size; x++)
         {
-            System.out.println(ingredientBox[x].getText());
+            System.out.println(ingredientBox[x].getText() + " " + ingredientNameBox[x].getText());
             ingredients[x] = ingredientBox[x].getText();
+            ingredientsName[x] = ingredientNameBox[x].getText();
+
         }
     }
 
     @FXML
     private void AddTextField(ActionEvent event)  {
         TextField newField = new TextField();
+        TextField newField1 = new TextField();
+
         ingredientBox[size] = newField;
+        ingredientNameBox[size] = newField1;
         size +=1;
-        ingbox.getChildren().add(newField);}
+        ingbox.getChildren().add(newField);
+        ingbox1.getChildren().add(newField1);
+
+    }
 
 }

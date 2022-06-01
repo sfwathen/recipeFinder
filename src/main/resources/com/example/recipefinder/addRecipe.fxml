@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="842.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.addrecipeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1063.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.addrecipeController">
    <children>
       <Text layoutX="213.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a Recipe" wrappingWidth="174.75927734375">
          <font>
@@ -20,8 +20,19 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Button fx:id="submit" layoutX="259.0" layoutY="793.0" mnemonicParsing="false" onAction="#submitEntry" prefHeight="25.0" prefWidth="83.0" text="Submit" />
-      <Button fx:id="adding" layoutX="413.0" layoutY="132.0" mnemonicParsing="false" onAction="#AddTextField" text="Add Ingredient" />
-      <VBox fx:id="ingbox" layoutX="33.0" layoutY="205.0" prefHeight="538.0" prefWidth="535.0" />
+      <Button fx:id="submit" layoutX="259.0" layoutY="1024.0" mnemonicParsing="false" onAction="#submitEntry" prefHeight="25.0" prefWidth="83.0" text="Submit" />
+      <Button fx:id="adding" layoutX="450.0" layoutY="124.0" mnemonicParsing="false" onAction="#AddTextField" text="Add Ingredient" />
+      <VBox fx:id="ingbox" layoutX="24.0" layoutY="187.0" prefHeight="782.0" prefWidth="192.0" />
+      <Text layoutX="42.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Amount">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="310.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <VBox fx:id="ingbox1" layoutX="283.0" layoutY="187.0" prefHeight="782.0" prefWidth="292.0" />
    </children>
 </AnchorPane>
