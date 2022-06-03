@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.MainMenuController">
+   <children>
+      <GridPane alignment="CENTER" pickOnBounds="false" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="107.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="363.0" minWidth="10.0" prefWidth="363.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="118.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="24.0" minHeight="24.0" prefHeight="24.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="24.0" minHeight="24.0" prefHeight="24.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="49.0" minHeight="49.0" prefHeight="49.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="24.0" minHeight="24.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="24.0" minHeight="24.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="105.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="72.0" prefWidth="390.0" text="RECIPEfinder" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <textFill>
+                  <LinearGradient endX="0.5439429928741093" endY="1.0" startX="0.5415676959619953" startY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="DIN Condensed Bold" size="66.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="savedRecipeLink" alignment="TOP_LEFT" prefHeight="41.0" prefWidth="121.0" stylesheets="@link.css" text="savedRECIPES" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="DIN Condensed Bold" size="24.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="105.0" stylesheets="@link.css" text="addRECIPES" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="DIN Condensed Bold" size="24.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="159.0" stylesheets="@link.css" text="communityRECIPES" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+               <font>
+                  <Font name="DIN Condensed Bold" size="24.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink alignment="TOP_RIGHT" prefHeight="41.0" prefWidth="131.0" stylesheets="@link.css" text="searchRECIPES" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+               <font>
+                  <Font name="DIN Condensed Bold" size="24.0" />
+               </font>
+            </Hyperlink>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </GridPane>
+   </children>
+</AnchorPane>
