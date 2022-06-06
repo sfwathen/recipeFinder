@@ -44,10 +44,8 @@ public class CommunityController implements Initializable {
     void info() throws SQLException {
         List<HBox> hboxList = new ArrayList<>();
         String selectSQL = "SELECT * FROM dish";
-//        PreparedStatement preparedStatement = dbConnection.prepareStatement(selectSQL);
-//        preparedStatement.setInt(1,1001);
-//        ResultSet rs = peparedStatement.executeQuery();
-        ResultSet rs = null;
+        PreparedStatement preparedStatement = RecipeFinder.conn.prepareStatement(selectSQL);
+        ResultSet rs = preparedStatement.executeQuery();
         while (rs.next()) {
             HBox hboxx = new HBox();
             Integer id = rs.getInt("dishID");
@@ -62,7 +60,8 @@ public class CommunityController implements Initializable {
             l1.setStyle("-fx-border-color:#4a4947; -fx-background-color: #b5b5b5; -fx-text-fill: #e01600; -fx-font-weight: bold; -fx-font: 16 arial;");
             l1.setOnAction(e -> {
                 try {
-                    RecipeFinder.navigateToNewPage("recipe-view.fxml", id);
+                    RecipeFinder.previousView = "saved-view.fxml";
+                    RecipeFinder.navigateToNewPage("dish-view.fxml", id);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

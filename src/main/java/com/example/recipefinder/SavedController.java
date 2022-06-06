@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,18 +39,21 @@ public class SavedController implements Initializable {
     @FXML
     void info() throws SQLException {
         List<HBox> hboxList = new ArrayList<>();
-        String selectSQL = String.format("SELECT * FROM dish d, saved s WHERE d.dishID=s.savedID and s.savedUser=%s", RecipeFinder.currentUser);
-//        PreparedStatement preparedStatement = dbConnection.prepareStatement(selectSQL);
-//        preparedStatement.setInt(1,1001);
-//        ResultSet rs = peparedStatement.executeQuery();
-        ResultSet rs = null;
+        String selectSQL = "SELECT * FROM dish d, saved s WHERE d.dishID=s.savedID and s.savedUser = ?";
+        PreparedStatement preparedStatement = RecipeFinder.conn.prepareStatement(selectSQL);
+        preparedStatement.setString(1, RecipeFinder.currentUser);
+        ResultSet rs = preparedStatement.executeQuery();
+
         while (rs.next()) {
             HBox hboxx = new HBox();
             Integer id = rs.getInt("dishID");
             String dishName = rs.getString("dishName");
             String description = rs.getString("description");
+            System.out.println("dishID: " + id);
+            System.out.println("dishName: " + dishName);
 
             //label for the dish name
+
             Button l1 = new Button(dishName);
             l1.setMinHeight(30);
             l1.setMinWidth(120);
@@ -57,7 +61,8 @@ public class SavedController implements Initializable {
             l1.setStyle("-fx-border-color:#4a4947; -fx-background-color: #b5b5b5; -fx-text-fill: #e01600; -fx-font-weight: bold; -fx-font: 16 arial;");
             l1.setOnAction(e -> {
                 try {
-                    RecipeFinder.navigateToNewPage("recipe-view.fxml", id, dishName);
+                    RecipeFinder.previousView = "saved-view.fxml";
+                    RecipeFinder.navigateToNewPage("dish-view.fxml", id);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

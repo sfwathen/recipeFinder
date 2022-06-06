@@ -2,12 +2,14 @@ package com.example.recipefinder;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +19,6 @@ import java.util.ResourceBundle;
 
 public class DishController implements Initializable{
 
-    private int dishID;
     @FXML
     private Label dishNameLabel;
     @FXML
@@ -62,8 +63,11 @@ public class DishController implements Initializable{
             e.printStackTrace();
         }
     }
-    void initData(int id, String name) {
-        dishID = id;
-        dishNameLabel.setText(name);
+    void initData(int id) {
+        RecipeFinder.currentDishID = id;
+    }
+
+    public void goToPrevious() throws IOException {
+        RecipeFinder.navigateToNewPage(RecipeFinder.previousView);
     }
 }

@@ -13,9 +13,9 @@ import static java.lang.Class.forName;
 import static javafx.application.ConditionalFeature.FXML;
 
 public class RecipeFinder extends Application {
-    public static String currentUser;
-    public int currentDishID;
-    public String previousView;
+    public static String currentUser = "admin";
+    public static int currentDishID;
+    public static String previousView;
 
     private static Stage stage;
 
@@ -26,12 +26,12 @@ public class RecipeFinder extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            conn = DriverManager.getConnection("jdbc:mysql://ambari-node5.csc.calpoly.edu:3306/atds93", "atds93", "newpass123");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://ambari-node5.csc.calpoly.edu:3306/atds93", "atds93", "newpass123");
+        } catch (Exception e) {
+            e.printStackTrace();
+       }
         RecipeFinder.stage = stage;
         stage.setTitle("RECIPEfinder");
         RecipeFinder.navigateToNewPage("main-menu-view.fxml");
@@ -45,7 +45,7 @@ public class RecipeFinder extends Application {
         stage.show();
     }
 
-    public static void navigateToNewPage(String pageName, int dishID, String name) throws IOException {
+    public static void navigateToNewPage(String pageName, int dishID) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RecipeFinder.class.getResource(pageName));
 
         Scene scene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
@@ -54,7 +54,7 @@ public class RecipeFinder extends Application {
 
         // UNCOMMENT THIS once recipe page is implemented (and make sure names line up)
         DishController dc = fxmlLoader.getController();
-        dc.initData(dishID, name);
+        dc.initData(dishID);
 
         stage.show();
     }
