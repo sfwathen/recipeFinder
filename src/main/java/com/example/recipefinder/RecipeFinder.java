@@ -4,16 +4,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.sql.*;
 
 import java.io.IOException;
-
-import static java.lang.Class.forName;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class RecipeFinder extends Application {
-    public String currentUser;
-    public int currentDishID;
-    public String previousView;
+    public static String currentUser = "admin";
+    public static int currentDishID = 1;
+    public static String previousView;
 
     public static Connection conn;
 
@@ -25,11 +24,20 @@ public class RecipeFinder extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(RecipeFinder.class.getResource("main-menu-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RecipeFinder.class.getResource("dish-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("RECIPEfinder");
         stage.setScene(scene);
         stage.show();
+        stage.setOnCloseRequest(event -> {
+            System.out.println("Stage is closing");
+            try{
+                conn.close();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        });
     }
 
     public static void main(String[] args) {
