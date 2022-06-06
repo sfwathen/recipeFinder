@@ -51,7 +51,7 @@
                   <Font name="DIN Condensed Bold" size="66.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="savedRecipeLink" alignment="TOP_LEFT" prefHeight="41.0" prefWidth="121.0" stylesheets="@link.css" text="savedRECIPES" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Hyperlink fx:id="savedRecipeLink" alignment="TOP_LEFT" onAction="#goToSaved" prefHeight="41.0" prefWidth="121.0" stylesheets="@link.css" text="savedRECIPES" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="DIN Condensed Bold" size="24.0" />
                </font>
@@ -61,7 +61,7 @@
                   <Font name="DIN Condensed Bold" size="24.0" />
                </font>
             </Hyperlink>
-            <Hyperlink alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="159.0" stylesheets="@link.css" text="communityRECIPES" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <Hyperlink alignment="BOTTOM_RIGHT" onAction="#goToCommunity" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="159.0" stylesheets="@link.css" text="communityRECIPES" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <font>
                   <Font name="DIN Condensed Bold" size="24.0" />
                </font>

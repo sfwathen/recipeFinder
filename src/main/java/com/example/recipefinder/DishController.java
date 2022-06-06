@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DishController implements Initializable{
+
+    private int dishID;
     @FXML
     private Label dishNameLabel;
     @FXML
@@ -20,5 +22,9 @@ public class DishController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
+    }
+    void initData(int id, String name) {
+        dishID = id;
+        dishNameLabel.setText(name);
     }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.SavedController">
+   <children>
+      <Label fx:id="dishNameLabel" layoutX="42.0" layoutY="40.0" prefHeight="42.0" prefWidth="515.0" text="Saved Recipes">
+         <font>
+            <Font name="DIN Condensed Bold" size="32.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="backButton" layoutX="14.0" layoutY="14.0" onAction="#goToHome" stylesheets="@link.css" text="&lt; BACK">
+         <font>
+            <Font name="DIN Condensed Bold" size="14.0" />
+         </font>
+      </Hyperlink>
+      <VBox fx:id="vboxxSaved" layoutX="42.0" layoutY="87.0" prefHeight="284.0" prefWidth="515.0" />
+   </children>
+</AnchorPane>

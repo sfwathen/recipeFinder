@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.DishController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.DishController">
    <children>
-      <Hyperlink layoutX="14.0" layoutY="14.0" stylesheets="@link.css" text="&lt; BACK" fx:id="backButton">
+      <Hyperlink fx:id="backButton" layoutX="14.0" layoutY="14.0" stylesheets="@link.css" text="&lt; BACK">
          <font>
             <Font name="DIN Condensed Bold" size="14.0" />
          </font>
       </Hyperlink>
-      <Label layoutX="43.0" layoutY="58.0" prefHeight="42.0" prefWidth="515.0" text="Dish Name" fx:id="dishNameLabel">
+      <Label fx:id="dishNameLabel" layoutX="43.0" layoutY="58.0" prefHeight="42.0" prefWidth="515.0" text="Dish Name">
          <font>
             <Font name="DIN Condensed Bold" size="32.0" />
          </font>
       </Label>
-      <ListView layoutX="43.0" layoutY="100.0" prefHeight="166.0" prefWidth="515.0" fx:id="ingredientListView"/>
-      <Label alignment="TOP_LEFT" layoutX="43.0" layoutY="273.0" prefHeight="113.0" prefWidth="515.0" text="Description" fx:id="dishDescLabel">
+      <ListView fx:id="ingredientListView" layoutX="43.0" layoutY="100.0" prefHeight="166.0" prefWidth="515.0" />
+      <Label fx:id="dishDescLabel" alignment="TOP_LEFT" layoutX="43.0" layoutY="273.0" prefHeight="113.0" prefWidth="515.0" text="Description">
          <font>
             <Font name="DIN Condensed Bold" size="14.0" />
          </font>
