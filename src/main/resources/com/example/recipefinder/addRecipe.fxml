@@ -22,7 +22,12 @@
       </Text>
       <Button fx:id="submit" layoutX="259.0" layoutY="783.0" mnemonicParsing="false" onAction="#submitEntry" prefHeight="25.0" prefWidth="83.0" text="Submit" />
       <Button fx:id="adding" layoutX="450.0" layoutY="124.0" mnemonicParsing="false" onAction="#AddTextField" text="Add Ingredient" />
-      <VBox fx:id="ingbox" layoutX="24.0" layoutY="187.0" prefHeight="596.0" prefWidth="192.0" />
+      <Text layoutX="14.0" layoutY="658.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" wrappingWidth="174.75927734375">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <VBox fx:id="ingbox" layoutX="24.0" layoutY="187.0" prefHeight="455.0" prefWidth="192.0" />
       <Text layoutX="42.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Amount">
          <font>
             <Font size="20.0" />
@@ -33,6 +38,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <VBox fx:id="ingbox1" layoutX="283.0" layoutY="187.0" prefHeight="596.0" prefWidth="292.0" />
+      <VBox fx:id="ingbox1" layoutX="283.0" layoutY="187.0" prefHeight="455.0" prefWidth="292.0" />
+      <TextField fx:id="description" layoutX="22.0" layoutY="670.0" prefHeight="80.0" prefWidth="562.0" />
    </children>
 </AnchorPane>

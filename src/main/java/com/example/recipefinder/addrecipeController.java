@@ -22,22 +22,34 @@ public class addrecipeController {
     @FXML
     private Button submit;
 
+    @FXML
+    private TextField description;
+
     String name;
+
+    String desc;
+
+    String dishInsert;
+    String ingredientsInsert[] = new String[50];
     int size = 0;
 
     TextField ingredientNameBox[] = new TextField[50];
     TextField ingredientBox[] = new TextField[50];
     String ingredients[] = new String[50];
     String ingredientsName[] = new String[50];
+
     public void submitEntry(ActionEvent event)
     {
         name = dishname.getText();
-        System.out.println(name);
+        desc = description.getText();
+        dishInsert = "INSERT INTO dish (dishName, description) VALUES (\'"+ name +"\',"+"\'"+desc+"\');";
+        System.out.println(dishInsert);
         for(int x = 0; x < size; x++)
         {
             System.out.println(ingredientBox[x].getText() + " " + ingredientNameBox[x].getText());
             ingredients[x] = ingredientBox[x].getText();
             ingredientsName[x] = ingredientNameBox[x].getText();
+
 
         }
     }
