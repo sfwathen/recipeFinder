@@ -46,15 +46,11 @@ public class RecipeFinder extends Application {
     }
 
     public static void navigateToNewPage(String pageName, int dishID) throws IOException {
+        currentDishID = dishID;
         FXMLLoader fxmlLoader = new FXMLLoader(RecipeFinder.class.getResource(pageName));
 
         Scene scene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
         stage.setScene(scene);
-
-
-        // UNCOMMENT THIS once recipe page is implemented (and make sure names line up)
-        DishController dc = fxmlLoader.getController();
-        dc.initData(dishID);
 
         stage.show();
     }

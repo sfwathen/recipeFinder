@@ -63,9 +63,6 @@ public class DishController implements Initializable{
             e.printStackTrace();
         }
     }
-    void initData(int id) {
-        RecipeFinder.currentDishID = id;
-    }
 
     public void goToPrevious() throws IOException {
         RecipeFinder.navigateToNewPage(RecipeFinder.previousView);

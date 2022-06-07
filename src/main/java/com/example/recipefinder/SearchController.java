@@ -8,10 +8,15 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.CheckBoxListCell;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -24,6 +29,34 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
+
+    public static class HBoxCell extends HBox{
+        Button button = new Button();
+
+        HBoxCell(String buttonText, int dishID) {
+            super();
+            button.setMaxWidth(Double.MAX_VALUE);
+            HBox.setHgrow(button, Priority.ALWAYS);
+
+            button.setText(buttonText);
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                    try {
+                        Statement drop_table = RecipeFinder.conn.createStatement();
+                        drop_table.execute("drop table if exists searchlist"+ RecipeFinder.currentUser);
+                        RecipeFinder.previousView = "search-view.fxml";
+                        System.out.println("testing dishID: " + dishID);
+                        RecipeFinder.navigateToNewPage("dish-view.fxml", dishID);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+
+            this.getChildren().addAll(button);
+        }
+    }
 
     @FXML
     private ListView ingredientListView;
@@ -54,25 +87,23 @@ public class SearchController implements Initializable {
                             addOrRemove.execute("delete from searchlist"+ RecipeFinder.currentUser +" where ingredient = \"" + item.getName() + "\"");
                         }
 
-                        ObservableList<String> results = FXCollections.observableArrayList();
+                        ObservableList<HBox> results = FXCollections.observableArrayList();
 
                         Statement fetchResults = RecipeFinder.conn.createStatement();
                         ResultSet resultSet = fetchResults.executeQuery("select * from dish d where d.dishID not " +
                                 "in(select dID from recipe r " +
                                 "where r.ingredient not in (select ingredient from searchlist" + RecipeFinder.currentUser +"));");
                         while(resultSet.next()){
-                            results.add(resultSet.getString("dishName"));
-                            System.out.println("found dish: " + resultSet.getString("dishName"));
+                            HBoxCell result = new HBoxCell(resultSet.getString("dishName"), resultSet.getInt("dishID"));
+                            results.add(result);
                         }
 
                         resultsListView.setItems(results);
-
 
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
 
-                    System.out.println(item.getName() + " changed on state from "+wasOn+" to "+isNowOn);
                 });
                 ingredientListView.getItems().add(item);
             }
