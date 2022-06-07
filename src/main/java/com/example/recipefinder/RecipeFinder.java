@@ -34,7 +34,7 @@ public class RecipeFinder extends Application {
        }
         RecipeFinder.stage = stage;
         stage.setTitle("RECIPEfinder");
-        RecipeFinder.navigateToNewPage("main-menu-view.fxml");
+        RecipeFinder.navigateToNewPage("login-view.fxml");
     }
 
     public static void navigateToNewPage(String pageName) throws IOException {

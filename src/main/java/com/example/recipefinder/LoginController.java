@@ -1,6 +1,7 @@
 package com.example.recipefinder;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -11,6 +12,8 @@ public class LoginController {
     protected void userLogin() throws IOException {
         String username = "Dean12";
         String passAttempt = "password";
+
+        TextField usernameInput = new TextField();
 
         try {
             String selectSQL = "SELECT password FROM users WHERE username=?";
@@ -41,22 +44,8 @@ public class LoginController {
 
 
     @FXML
-    public void createUser() {
-        String username = "Tiger1";
-        String password = "tigerPass";
-
-        try {
-            String insertSQL = "INSERT INTO users (username, password) VALUES (?, ?)";
-            PreparedStatement preparedStatement = RecipeFinder.conn.prepareStatement(insertSQL);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            preparedStatement.executeQuery();
-
-            RecipeFinder.currentUser = username;
-            System.out.println("User Successfully Created");
-        }
-        catch (Exception e) {
-            System.out.println("User already exists");
-        }
+    protected void goToCreateAccount() throws IOException {
+        RecipeFinder.navigateToNewPage("create-account-view.fxml");
     }
+
 }
