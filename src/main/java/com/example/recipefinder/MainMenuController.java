@@ -14,4 +14,9 @@ public class MainMenuController {
     protected void goToSaved() throws IOException {
         RecipeFinder.navigateToNewPage("saved-view.fxml");
     }
+
+    @FXML
+    protected void goToSearch() throws IOException {
+        RecipeFinder.navigateToNewPage("search-view.fxml");
+    }
 }
