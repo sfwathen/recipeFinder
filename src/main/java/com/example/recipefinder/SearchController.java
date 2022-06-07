@@ -46,7 +46,6 @@ public class SearchController implements Initializable {
                         Statement drop_table = RecipeFinder.conn.createStatement();
                         drop_table.execute("drop table if exists searchlist"+ RecipeFinder.currentUser);
                         RecipeFinder.previousView = "search-view.fxml";
-                        System.out.println("testing dishID: " + dishID);
                         RecipeFinder.navigateToNewPage("dish-view.fxml", dishID);
                     } catch (Exception ex) {
                         ex.printStackTrace();
