@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.LoginController">
    <children>
       <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="43.0" layoutY="58.0" prefHeight="42.0" prefWidth="515.0" text="Welcome to Recipe Finder" textAlignment="CENTER">
@@ -33,13 +34,13 @@
                   <Font name="DIN Condensed Bold" size="18.0" />
                </font>
             </Label>
-            <TextField id="usernameInput" GridPane.columnIndex="1" />
+            <TextField id="usernameInput" fx:id="usernameInput" GridPane.columnIndex="1" />
             <Label fx:id="passwordLabel" alignment="CENTER_RIGHT" prefHeight="42.0" prefWidth="515.0" text="Password: " GridPane.rowIndex="2">
                <font>
                   <Font name="DIN Condensed Bold" size="18.0" />
                </font>
             </Label>
-            <TextField id="passwordInput" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField id="passwordInput" fx:id="passwordInput" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button id="loginButton" layoutX="236.0" layoutY="258.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="130.0" text="Login" onAction="#userLogin">
@@ -52,5 +53,10 @@
             <Font name="DIN Condensed Bold" size="14.0" />
          </font>
       </Hyperlink>
+       <Label fx:id="loginErrorLabel" id="loginErrorLabel" alignment="CENTER" layoutX="43.0" layoutY="340" prefHeight="42.0" prefWidth="515.0" text="" textAlignment="CENTER">
+           <font>
+               <Font name="DIN Condensed Bold" size="24.0" />
+           </font>
+       </Label>
    </children>
 </AnchorPane>
