@@ -82,11 +82,12 @@ public class DishController implements Initializable{
     }
 
     public void addToSaved(ActionEvent actionEvent) throws Exception{
-        saveButton.setText("Saved!");
-        PreparedStatement prepSt = RecipeFinder.conn.prepareStatement("insert into saved(savedUser, savedID) values (?,?)");
-        prepSt.setString(1, RecipeFinder.currentUser);
-        prepSt.setInt(2, RecipeFinder.currentDishID);
-        prepSt.executeUpdate();
-
+        if(!saveButton.getText().equals("Saved!")) {
+            saveButton.setText("Saved!");
+            PreparedStatement prepSt = RecipeFinder.conn.prepareStatement("insert into saved(savedUser, savedID) values (?,?)");
+            prepSt.setString(1, RecipeFinder.currentUser);
+            prepSt.setInt(2, RecipeFinder.currentDishID);
+            prepSt.executeUpdate();
+        }
     }
 }
