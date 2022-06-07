@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class HBoxCell extends HBox {
     Button button = new Button();
 
-    HBoxCell(String buttonText, int dishID) {
+    HBoxCell(String buttonText, int dishID, String currentPage) {
         super();
         button.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(button, Priority.ALWAYS);
@@ -19,7 +19,7 @@ public class HBoxCell extends HBox {
             try {
                 Statement drop_table = RecipeFinder.conn.createStatement();
                 drop_table.execute("drop table if exists searchlist" + RecipeFinder.currentUser);
-                RecipeFinder.previousView = "search-view.fxml";
+                RecipeFinder.previousView = currentPage;
                 RecipeFinder.navigateToNewPage("dish-view.fxml", dishID);
             } catch (Exception ex) {
                 ex.printStackTrace();

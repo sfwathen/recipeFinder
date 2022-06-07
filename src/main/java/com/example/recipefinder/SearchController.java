@@ -55,7 +55,7 @@ public class SearchController implements Initializable {
                                 "in(select dID from recipe r " +
                                 "where r.ingredient not in (select ingredient from searchlist" + RecipeFinder.currentUser +"));");
                         while(resultSet.next()){
-                            HBoxCell result = new HBoxCell(resultSet.getString("dishName"), resultSet.getInt("dishID"));
+                            HBoxCell result = new HBoxCell(resultSet.getString("dishName"), resultSet.getInt("dishID"), "search-view.fxml");
                             results.add(result);
                         }
 
