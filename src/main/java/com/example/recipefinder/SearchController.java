@@ -1,28 +1,17 @@
 package com.example.recipefinder;
 
-import com.mysql.cj.conf.BooleanProperty;
-import com.mysql.cj.conf.StringProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,17 +28,14 @@ public class SearchController implements Initializable {
             HBox.setHgrow(button, Priority.ALWAYS);
 
             button.setText(buttonText);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                    try {
-                        Statement drop_table = RecipeFinder.conn.createStatement();
-                        drop_table.execute("drop table if exists searchlist"+ RecipeFinder.currentUser);
-                        RecipeFinder.previousView = "search-view.fxml";
-                        RecipeFinder.navigateToNewPage("dish-view.fxml", dishID);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
+            button.setOnAction(e -> {
+                try {
+                    Statement drop_table = RecipeFinder.conn.createStatement();
+                    drop_table.execute("drop table if exists searchlist"+ RecipeFinder.currentUser);
+                    RecipeFinder.previousView = "search-view.fxml";
+                    RecipeFinder.navigateToNewPage("dish-view.fxml", dishID);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             });
 
@@ -79,7 +65,7 @@ public class SearchController implements Initializable {
                 item.onProperty().addListener((obs, wasOn, isNowOn) -> {
                     try {
                         Statement addOrRemove = RecipeFinder.conn.createStatement();
-                        if (wasOn == false){
+                        if (!wasOn){
                             addOrRemove.execute("insert into searchlist" + RecipeFinder.currentUser +"(ingredient) values (\"" + item.getName() +"\");");
                         }
                         else{
@@ -111,16 +97,11 @@ public class SearchController implements Initializable {
             e.printStackTrace();
         }
 
-        ingredientListView.setCellFactory(CheckBoxListCell.forListView(new Callback<Item, ObservableValue<Boolean>>() {
-            @Override
-            public ObservableValue<Boolean> call(Item item) {
-                return item.onProperty();
-            }
-        }));
+        ingredientListView.setCellFactory(CheckBoxListCell.forListView(Item::onProperty));
 
     }
 
-    public void goToHome(ActionEvent actionEvent) throws IOException, SQLException {
+    public void goToHome() throws IOException, SQLException {
         Statement drop_table = RecipeFinder.conn.createStatement();
         drop_table.execute("drop table if exists searchlist"+ RecipeFinder.currentUser);
         RecipeFinder.navigateToNewPage("main-menu-view.fxml");
