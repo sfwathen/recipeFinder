@@ -70,7 +70,7 @@ public class SearchController implements Initializable {
             temp_table.execute("create table if not exists searchlist"+ RecipeFinder.currentUser +" (ingredient varchar(50) primary key);");
 
             Statement search = RecipeFinder.conn.createStatement();
-            ResultSet rs = search.executeQuery("select ingredient from recipe;");
+            ResultSet rs = search.executeQuery("select distinct ingredient from recipe;");
 
             while (rs.next()){
                 Item item = new Item(rs.getString("ingredient"), false);
