@@ -50,7 +50,7 @@
                   <Font name="DIN Condensed Bold" size="24.0" />
                </font>
             </Hyperlink>
-            <Hyperlink alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="105.0" stylesheets="@link.css" text="addRECIPES" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Hyperlink alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="105.0" stylesheets="@link.css" text="addRECIPES" GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#goToAddRecipes">
                <font>
                   <Font name="DIN Condensed Bold" size="24.0" />
                </font>

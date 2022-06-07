@@ -7,8 +7,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.Hyperlink?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="839.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.recipefinder.addrecipeController">
    <children>
+      <Hyperlink layoutX="14.0" layoutY="14.0" onAction="#goBackToMenu" stylesheets="@link.css" text="&lt; BACK">
+         <font>
+            <Font name="DIN Condensed Bold" size="14.0" />
+         </font>
+      </Hyperlink>
       <Text layoutX="213.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a Recipe" wrappingWidth="174.75927734375">
          <font>
             <Font size="30.0" />
