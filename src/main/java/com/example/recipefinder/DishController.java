@@ -38,8 +38,8 @@ public class DishController implements Initializable{
             String dishDesc = "Dish Description";
 
             while (dish.next()){
-                dishName = dish.getString(1);
-                dishDesc = dish.getString(2);
+                dishName = dish.getString("dishName");
+                dishDesc = dish.getString("description");
             }
 
             dishNameLabel.setText(dishName);
