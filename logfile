@@ -1,0 +1,19 @@
+Page Designs - in order of appearance
+- Login - Dean
+- Main Menu - Alex
+- Add Recipes - Tiger
+- Community Recipes - Sam
+- Saved Recipes - Sam
+- Search Recipes - Alex
+
+Shared Functions
+navigateToNewPage - Sam
+HBoxCell functions - Alex
+
+Controllers
+- Login - Dean
+- Main Menu - Alex
+- Add Recipes - Tiger
+- Community Recipes - Sam
+- Saved Recipes - Sam
+- Search Recipes - Alex
