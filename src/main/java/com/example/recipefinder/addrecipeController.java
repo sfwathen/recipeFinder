@@ -1,9 +1,13 @@
 package com.example.recipefinder;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -11,10 +15,15 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class addrecipeController {
     @FXML
     private TextField dishname;
+
+    @FXML
+    private ListView listing;
 
     @FXML
     private Button adding;
@@ -30,6 +39,7 @@ public class addrecipeController {
     @FXML
     private TextField description;
 
+    ObservableList<HBox> results = FXCollections.observableArrayList();
     String name;
 
     String desc;
@@ -78,7 +88,11 @@ public class addrecipeController {
 
         // add recipes
         for (int i = 0; i < size; i++) {
-            String ingredient = ingredients[i];
+            String amountStr = ingredients[i].substring(0,1);
+            int amount = Integer.parseInt(amountStr);
+            String unit = ingredients[i].substring(2);
+            String ingredient = ingredientsName[i];
+            insertRecipe(amount, ingredient, newDishID, unit);
         }
 
     }
@@ -132,12 +146,14 @@ public class addrecipeController {
     private void AddTextField(ActionEvent event)  {
         TextField newField = new TextField();
         TextField newField1 = new TextField();
-
+        HBox h = new HBox();
+        h.getChildren().add(newField);
+        h.getChildren().add(newField1);
         ingredientBox[size] = newField;
         ingredientNameBox[size] = newField1;
         size +=1;
-        ingbox.getChildren().add(newField);
-        ingbox1.getChildren().add(newField1);
+        results.add(h);
+        listing.setItems(results);
 
     }
 
